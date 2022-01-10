@@ -1,10 +1,10 @@
 class CatagoryModel {
   int? id;
-  String? name;
+  late String name;
 
   CatagoryModel({
     this.id,
-    this.name,
+    name,
   });
 
   CatagoryModel.fromJson(Map<String, dynamic> json) {
