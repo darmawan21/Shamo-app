@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of(context);
-
     UserModel user = authProvider.user;
 
     Widget header() {
