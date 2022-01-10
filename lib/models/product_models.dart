@@ -5,7 +5,7 @@ class ProductModel {
   int? id;
   late String name;
   double? price;
-  String? description;
+  late String description;
   String? tags;
   late CatagoryModel category;
   DateTime? createdAt;
@@ -16,7 +16,7 @@ class ProductModel {
     this.id,
     name,
     this.price,
-    this.description,
+    description,
     this.tags,
     category,
     this.createdAt,
