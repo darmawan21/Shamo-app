@@ -132,6 +132,7 @@ class _MainPageState extends State<MainPage> {
     }
 
     return Scaffold(
+      extendBody: true,
       backgroundColor: currentIndex == 0 ? backgroundColor1 : backgroundColor3,
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

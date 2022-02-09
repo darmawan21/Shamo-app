@@ -4,6 +4,7 @@ import 'package:shamo/models/product_models.dart';
 
 class CartProvider with ChangeNotifier {
   List<CartModel> _carts = [];
+  List<CartModel> _toRemove = [];
 
   // Getter Setter
   List<CartModel> get carts => _carts;
@@ -34,22 +35,30 @@ class CartProvider with ChangeNotifier {
 
   // Function Remove
   removeCart(int id) {
-    _carts.removeAt(id);
-    notifyListeners();
+    if (_carts.length > 0) {
+      _carts.removeWhere((element) => element.id == id);
+      notifyListeners();
+    }
   }
 
   // Function add quantity
   addQuantity(int id) {
-    _carts[id].quantity++;
+    _carts.where((element) => element.id == id).forEach((element) {
+      element.quantity++;
+    });
     notifyListeners();
   }
 
   // Function reduse quantity
   reduceQuantity(int id) {
-    _carts[id].quantity--;
-    if (_carts[id].quantity == 0) {
-      _carts.removeAt(id);
-    }
+    _carts.where((element) => element.id == id).forEach((element) {
+      element.quantity--;
+      if (element.quantity == 0) {
+        _toRemove.add(element);
+      }
+    });
+
+    _carts.removeWhere((e) => _toRemove.contains(e));
     notifyListeners();
   }
 
